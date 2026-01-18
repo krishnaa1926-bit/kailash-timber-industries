@@ -90,7 +90,7 @@ nav {
 }
 
 .logo span {
-  color: #F7F6F2;
+  color: #0e0b00;
 }
 
 .nav-links {
@@ -104,7 +104,7 @@ nav {
 }
 
 .nav-links a {
-  color: #F7F6F2;
+  color: #2B2B2B;
   transition: color 0.3s;
 }
 
@@ -559,7 +559,7 @@ footer {
 
 /* Navbar Transparency */
 header {
-  background-color: rgba(31, 61, 43, 0.9);
+  background-color: transparent;
   backdrop-filter: blur(10px);
   transition: background-color 0.3s ease;
 }
@@ -663,7 +663,7 @@ header.scrolled {
 
 /* About Page Styles */
 .about-hero {
-  background: linear-gradient(135deg, rgba(133, 153, 141, 0.9), rgba(255, 255, 255, 0.7)), url('../kti1.jpeg');
+  background: linear-gradient(135deg, rgba(146, 201, 168, 0.9), rgba(189, 118, 118, 0.7)), url('../wr.jpeg');
   background-size: cover;
   background-position: center;
   color: #F7F6F2;
@@ -856,6 +856,7 @@ header.scrolled {
   position: relative;
   opacity: 1;
   animation: fadeIn 1s ease-out;
+  font-size: 60px;
 }
 
 .about-hero .hero-content p {
@@ -2324,10 +2325,10 @@ header.scrolled {
 
 .slide {
   position: absolute;
-  top: 0;
+  top: 15%;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 70%;
   opacity: 1;
   transform: translateX(100%);
   transition: transform 1s ease-out, opacity 1s ease-out;
@@ -2339,8 +2340,8 @@ header.scrolled {
 }
 
 .slide img {
-  width: 100%;
-  height: 100%;
+  width: 70%;
+  height: 90%;
   object-fit: cover;
   border-radius: 15px;
 }
