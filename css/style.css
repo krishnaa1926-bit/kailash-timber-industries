@@ -1072,7 +1072,7 @@ header.scrolled {
 
 .image-caption {
   position: absolute;
-  bottom:30%;
+  bottom:35%;
   left: 0;
   background: rgba(31, 61, 43, 0.9);
   color: #F7F6F2;
@@ -1213,7 +1213,7 @@ header.scrolled {
 }
 
 .office-image img {
-  height: 70%;
+  height: 65%;
   width: 100%;
   object-fit: cover;
   border-radius: 15px;
@@ -1228,7 +1228,7 @@ header.scrolled {
 
 .office-content p {
   color: #5A5A5A;
-  line-height: 1.65;
+  line-height: 1.5;
   margin-bottom: 1rem;
   font-size: 1.5rem
 }
