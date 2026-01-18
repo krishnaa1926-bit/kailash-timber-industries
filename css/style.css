@@ -1072,7 +1072,7 @@ header.scrolled {
 
 .image-caption {
   position: absolute;
-  bottom:35%;
+  bottom:45%;
   left: 0;
   background: rgba(31, 61, 43, 0.9);
   color: #F7F6F2;
@@ -1213,7 +1213,7 @@ header.scrolled {
 }
 
 .office-image img {
-  height: 65%;
+  height: 55%;
   width: 100%;
   object-fit: cover;
   border-radius: 15px;
@@ -1230,7 +1230,7 @@ header.scrolled {
   color: #5A5A5A;
   line-height: 1.5;
   margin-bottom: 1rem;
-  font-size: 1.5rem
+  font-size: 1.4rem
 }
 
 .team-section {
