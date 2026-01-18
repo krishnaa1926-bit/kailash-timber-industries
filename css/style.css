@@ -1234,7 +1234,7 @@ header.scrolled {
 }
 
 .team-section {
-  padding: 6rem 2rem;
+  padding: 2rem 2rem;
   background: linear-gradient(135deg, #F7F6F2 0%, #E8E3D8 100%);
   color: #2B2B2B;
 }
@@ -1248,8 +1248,8 @@ header.scrolled {
   display: flex;
   background: linear-gradient(145deg, #FFFFFF, #F0EDE6);
   border-radius: 20px;
-  padding: 3rem;
-  margin-bottom: 4rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
   align-items: center;
   box-shadow: 0 15px 35px rgba(139, 90, 43, 0.15);
   border: 2px solid #C9A24D;
