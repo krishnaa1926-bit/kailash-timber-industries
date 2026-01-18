@@ -1447,8 +1447,8 @@ header.scrolled {
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 3rem;
 }
 
 .product-item {
@@ -1483,9 +1483,30 @@ header.scrolled {
   border-color: rgba(201, 162, 77, 0.3);
 }
 
+.merged-card {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.merged-left,
+.merged-right {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+}
+
+.merged-left .product-image {
+  height: 300px;
+}
+
+.merged-right .product-info {
+  padding: 1.2rem;
+}
+
 .product-image {
   position: relative;
-  height: 550px;
+  height: 210px;
   overflow: hidden;
 }
 
