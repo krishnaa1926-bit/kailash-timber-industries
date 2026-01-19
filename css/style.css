@@ -11,6 +11,50 @@ img {
   height: auto;
 }
 
+/* Universal mobile-first split layout system */
+.split-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+.split-section > * {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Tablet and Desktop */
+@media (min-width: 768px) {
+  .split-section {
+    flex-direction: row;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .split-section > * {
+    width: 50%;
+  }
+}
+
+/* Safety rules for mobile overflow */
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+body {
+  overflow-x: hidden;
+}
+
 body {
   font-family: 'Arial', sans-serif;
   line-height: 1.6;
@@ -3147,4 +3191,166 @@ header.scrolled {
   font-weight: 600;
   font-size: 0.9rem;
   margin: 0;
+}
+
+/* Mobile fixes for responsiveness */
+@media (max-width: 767px) {
+  /* Facilities section: Remove horizontal auto-scroll animation on mobile */
+  #facilities-gallery .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: auto;
+    animation: none;
+    gap: 1.5rem;
+  }
+
+  #facilities-gallery .card {
+    width: auto;
+  }
+
+  /* Product slideshow: Prevent horizontal scrolling by removing animation and fixing widths */
+  .product-slideshow .slideshow-container {
+    height: auto;
+  }
+
+  .product-slideshow .slideshow {
+    width: 100%;
+    animation: none;
+  }
+
+  .product-slideshow .slide-card {
+    width: 100%;
+  }
+
+  /* Slideshow: Remove animation on mobile to prevent issues */
+  .slideshow {
+    animation: none;
+  }
+
+  /* Ensure grids stack vertically on mobile */
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Ensure images stay within card width */
+  .card img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Navigation: Ensure logo and menu toggle are centered */
+  nav {
+    align-items: center;
+  }
+
+  .logo {
+    text-align: center;
+  }
+
+  /* Hero sections: Prevent text overflow */
+  .home-hero .hero-left h1,
+  .home-hero .hero-right p,
+  .about-hero .hero-content h2,
+  .products-hero .hero-content h2,
+  .sustainability-hero .hero-content h2 {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+
+  /* Buttons: Ensure they stay inside viewport */
+  .cta-button,
+  .submit-btn,
+  .tab-button {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Fix any containers wider than 100vw */
+  .stamp-content {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  /* Office showcase: Stack vertically */
+  .office-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  /* Team grid: Stack vertically */
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Contact form: Stack vertically */
+  .contact-form-container {
+    grid-template-columns: 1fr;
+  }
+
+  /* Horizontal timeline: Stack vertically */
+  .horizontal-timeline {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .horizontal-timeline::before {
+    display: none;
+  }
+
+  .horizontal-timeline .timeline-item {
+    max-width: none;
+  }
+}
+
+/* =========================
+   MOBILE HOTFIX PATCH
+   DO NOT TOUCH DESKTOP
+   ========================= */
+@media (max-width: 767px) {
+
+  /* Kill sideways scroll from section margins */
+  section {
+    margin: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  /* Hero height sanity */
+  .home-hero {
+    min-height: 80vh !important;
+  }
+
+  /* Force all grids to behave on mobile */
+  .grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+  }
+
+  /* Cards must never exceed screen */
+  .card {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Images stay inside cards */
+  .card img {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Fix about section overflow */
+  .about-preview {
+    flex-direction: column !important;
+  }
+
+  /* Nav spacing fix */
+  nav {
+    align-items: center !important;
+  }
+
+  /* Buttons don’t overflow */
+  .cta-button {
+    max-width: 100%;
+    text-align: center;
+  }
 }
