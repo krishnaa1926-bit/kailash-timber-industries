@@ -17,6 +17,8 @@ body {
   color: #2B2B2B;
   background: linear-gradient(135deg, #F7F6F2 0%, #E8E3D8 100%);
   min-height: 100vh;
+  /* Fix: Added overflow-x: hidden to prevent horizontal scrolling on mobile */
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -1224,9 +1226,7 @@ header.scrolled {
 }
 
 .image-caption {
-  position: absolute;
-  bottom:45%;
-  left: 0;
+  /* Fix: Removed position: absolute to integrate into normal document flow, preventing overlap on mobile */
   background: rgba(31, 61, 43, 0.9);
   color: #F7F6F2;
   padding: 8px 12px;
@@ -1234,6 +1234,8 @@ header.scrolled {
   font-size: 0.9rem;
   font-weight: 500;
   backdrop-filter: blur(5px);
+  margin-top: 1rem;
+  text-align: center;
 }
 
 .timeline {
