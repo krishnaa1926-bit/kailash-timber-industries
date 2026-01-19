@@ -404,8 +404,29 @@ function stopCardSlideshow() {
     clearInterval(cardSlideshowInterval);
 }
 
+// Mobile logo span hide on scroll and navbar transparency
+function handleMobileLogoScroll() {
+    if (window.innerWidth <= 768) {
+        const logoSpan = document.querySelector('.logo span');
+        const header = document.querySelector('header');
+        if (logoSpan && header) {
+            if (window.scrollY > 100) {
+                logoSpan.classList.add('hide-on-scroll');
+                header.classList.add('scrolled');
+            } else {
+                logoSpan.classList.remove('hide-on-scroll');
+                header.classList.remove('scrolled');
+            }
+        }
+    }
+}
+
 // Initialize slideshow
 document.addEventListener('DOMContentLoaded', function() {
+    // Add scroll listener for mobile logo
+    window.addEventListener('scroll', handleMobileLogoScroll);
+    handleMobileLogoScroll(); // Check on load
+
     if (slides.length > 0) {
         showSlide(0);
         startSlideshow();

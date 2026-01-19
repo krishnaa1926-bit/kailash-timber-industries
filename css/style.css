@@ -117,9 +117,10 @@ a:hover {
 header {
   position: sticky;
   top: 0;
-  background-color: #1F3D2B;
+  background-color: #6bae868b;
   color: #F7F6F2;
   z-index: 1000;
+  opacity: transclucent;
 }
 
 nav {
@@ -132,9 +133,9 @@ nav {
 .logo {
   display: flex;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-weight: bold;
-  margin-bottom: 1rem;
+  margin-bottom: 0px;
   font-family: 'Noto Serif', serif;
 }
 
@@ -144,7 +145,7 @@ nav {
 }
 
 .logo span {
-  color: #0e0b00;
+  color: #118143;
 }
 
 .nav-links {
@@ -161,7 +162,7 @@ nav {
 }
 
 .nav-links a {
-  color: #F7F6F2;
+  color: #f7f6f2;
   transition: color 0.3s;
   display: block;
   padding: 0.5rem;
@@ -794,6 +795,25 @@ header.scrolled {
 }
 
 @media (max-width: 768px) {
+  header {
+    background-color: #1F3D2B;
+    transition: background-color 0.3s ease;
+  }
+
+  header.scrolled {
+    background-color: transparent;
+  }
+
+  .logo span {
+    display: block;
+    transition: opacity 0.3s ease;
+  }
+
+  .logo span.hide-on-scroll {
+    opacity: 0;
+    pointer-events: none;
+  }
+
   nav {
     flex-direction: column;
     align-items: flex-start;
@@ -843,6 +863,7 @@ header.scrolled {
   .about-preview img {
     max-width: 100%;
   }
+
 }
 
 @media (max-width: 480px) {
@@ -1157,13 +1178,13 @@ header.scrolled {
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 3rem;
+ 
   text-align: center;
 }
 
 .sustainability-hero .hero-content h2 {
   font-family: 'Georgia', serif;
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   font-weight: 700;
   color: #F7F6F2;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
@@ -1177,9 +1198,9 @@ header.scrolled {
 
 .sustainability-hero .hero-content p {
   font-family: 'Arial', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 400;
-  line-height: 1.6;
+  font-size: 1rem;
+  font-weight: 100;
+  line-height: 1.2;
   color: #011f01;
   margin: 0 auto;
   max-width: 800px;
