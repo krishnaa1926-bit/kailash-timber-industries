@@ -135,6 +135,7 @@ nav {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 1rem;
+  font-family: 'Noto Serif', serif;
 }
 
 .logo img {
@@ -1249,6 +1250,7 @@ header.scrolled {
 .story-section {
   padding: 3rem 0rem;
   background: linear-gradient(135deg, #F7F6F2 0%, #E8E3D8 100%);
+  
 }
 
 .story-container {
@@ -1269,6 +1271,7 @@ header.scrolled {
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
+
 
 .image-caption {
   /* Fix: Removed position: absolute to integrate into normal document flow, preventing overlap on mobile */
