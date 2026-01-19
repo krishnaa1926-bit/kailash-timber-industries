@@ -3208,7 +3208,7 @@ header.scrolled {
     width: auto;
   }
 
-  /* Product slideshow: Prevent horizontal scrolling by removing animation and fixing widths */
+  /* Product slideshow: Enable sliding by hiding inactive slides and letting JS control */
   .product-slideshow .slideshow-container {
     height: auto;
   }
@@ -3216,10 +3216,16 @@ header.scrolled {
   .product-slideshow .slideshow {
     width: 100%;
     animation: none;
+    display: block;
   }
 
   .product-slideshow .slide-card {
     width: 100%;
+    display: none;
+  }
+
+  .product-slideshow .slide-card.active {
+    display: block;
   }
 
   /* Slideshow: Remove animation on mobile to prevent issues */
