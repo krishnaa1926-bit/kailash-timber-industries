@@ -2951,10 +2951,16 @@ header.scrolled {
     margin-bottom: 1.5rem;
   }
 
+  .team-member.featured .member-info {
+    width: 100%;
+    max-width: 100%;
+  }
+
   .team-member.featured .member-info p {
     word-wrap: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
+    max-width: 100%;
   }
 
   .team-grid {
@@ -3428,6 +3434,124 @@ header.scrolled {
   /* Buttons don’t overflow */
   .cta-button {
     max-width: 100%;
+    text-align: center;
+  }
+}
+/* Mobile fix for Featured Team Card */
+@media (max-width: 600px) {
+  .team-member.featured {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .team-member.featured img {
+    margin-right: 0;
+    margin-bottom: 1.5rem;
+    width: 160px;
+    height: 160px;
+  }
+
+  .team-member.featured .member-info {
+    width: 100%;
+  }
+
+  .team-member.featured .member-info p {
+    padding: 0 0.5rem;
+    word-wrap: break-word;
+  }
+}
+/* Mobile Product Page Layout Fix */
+@media (max-width: 600px) {
+
+  /* Force single column stack */
+  .product-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
+  }
+
+  /* Make first product (image + info) go on top */
+  .product-grid .split-section {
+    order: 1;
+    flex-direction: column;
+  }
+
+  /* Custom size card goes below */
+  .product-grid .custom-size-card {
+    order: 2;
+  }
+
+  /* Make cards full width */
+  .product-item,
+  .product-grid .split-section {
+    width: 100%;
+  }
+
+  /* Clean spacing inside product info */
+  .product-info {
+    padding: 1.2rem 1rem;
+  }
+
+  .product-info h3 {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  .product-info p,
+  .product-info ul {
+    font-size: 0.95rem;
+  }
+
+  .product-info ul {
+    padding-left: 1.2rem;
+  }
+
+  /* Center CTA buttons on mobile */
+  .product-info .cta-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+}
+/* Mobile fix: Stack product cards cleanly */
+@media (max-width: 600px) {
+
+  /* Force grid to single column */
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Make sure image+info block stays on top */
+  .split-section {
+    flex-direction: column;
+  }
+
+  /* Give top product card same clean white background */
+  .split-section .product-info {
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(139, 90, 43, 0.15);
+    padding: 1.5rem;
+  }
+
+  /* Custom card spacing */
+  .custom-size-card {
+    margin-top: 2rem;
+  }
+
+  /* Make text breathe on small screens */
+  .product-info p,
+  .product-info li {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .product-specs {
+    justify-content: center;
+  }
+
+  .cta-button {
+    width: 100%;
     text-align: center;
   }
 }
