@@ -2951,6 +2951,12 @@ header.scrolled {
     margin-bottom: 1.5rem;
   }
 
+  .team-member.featured .member-info p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
   .team-grid {
     grid-template-columns: 1fr;
   }
@@ -3010,8 +3016,73 @@ header.scrolled {
   }
 
   .product-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  .split-section {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .split-section > * {
+    width: 100%;
+  }
+
+  .product-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .product-info p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .product-info ul {
+    padding-left: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .product-info ul li {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .product-specs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .product-specs span {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .custom-size-card .product-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .custom-size-card .product-info p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .custom-size-card .product-specs span {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    font-size: 0.9rem;
+    padding: 0.6rem;
   }
 
   .merged-card {
