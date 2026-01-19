@@ -3461,6 +3461,34 @@ header.scrolled {
     word-wrap: break-word;
   }
 }
+/* Vision Section Styles */
+.vision-section {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.vision-card {
+  background: linear-gradient(145deg, #FFFFFF, #F0EDE6);
+  border: 2px solid #8B5A2B;
+  border-radius: 15px;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 8px 20px rgba(139, 90, 43, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.vision-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(139, 90, 43, 0.2);
+}
+
+.vision-card p {
+  color: #2B2B2B;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
 /* Mobile Product Page Layout Fix */
 @media (max-width: 600px) {
 
