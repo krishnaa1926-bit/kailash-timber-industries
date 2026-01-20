@@ -1070,7 +1070,7 @@ header.scrolled {
   font-size: 1rem;
   font-weight: 500;
   line-height: 1;
-  color: #eed4d4;
+  color: #fefefe;
   margin-bottom: 2.5rem;
   max-width: 600px;
   margin-left: auto;
@@ -1469,11 +1469,12 @@ header.scrolled {
 
 /* Sustainability Page Hero Styles */
 .sustainability-hero {
-  background: linear-gradient(135deg, rgba(174, 230, 174, 0.8), rgba(178, 160, 43, 0.6)), url('../sus.jpeg');
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)), url('../sus2.png');
   background-size: cover;
   background-position: center;
+  filter: grayscale(20%) blur(0.5px);
   color: #F7F6F2;
-  min-height: 100vh;
+  min-height: 50vh;
   position: relative;
   overflow: hidden;
   margin-bottom: 0;
@@ -1488,7 +1489,7 @@ header.scrolled {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="leaves" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="2" fill="%2322c55e" opacity="0.1"/><circle cx="75" cy="75" r="2" fill="%2316a34a" opacity="0.1"/><path d="M50,10 Q60,20 50,30 Q40,20 50,10 Z" fill="%2322c55e" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23leaves)"/></svg>');
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
   z-index: 1;
 }
 
@@ -1497,36 +1498,106 @@ header.scrolled {
   z-index: 2;
   animation: fadeIn 2s ease-out;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
- 
+  padding: 0 1rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
 }
 
-.sustainability-hero .hero-content h2 {
-  font-family: 'Georgia', serif;
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #F7F6F2;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  margin-bottom: 1.5rem;
-  background: linear-gradient(45deg, #010c05, #0b7833);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: #22c55e; /* Fallback */
+.sustainability-hero .hero-content h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #136432;
+  line-height: 1.2;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+  position: relative;
+}
+
+.sustainability-hero .hero-content h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: #8b5a2b;
+  border-radius: 2px;
 }
 
 .sustainability-hero .hero-content p {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
-  font-weight: 100;
-  line-height: 1.2;
-  color: #011f01;
-  margin: 0 auto;
-  max-width: 800px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  animation: fadeIn 3s ease-out;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #eeecea;
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  max-width: 600px;
+}
+
+.proof-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.proof-strip span {
+  background: rgba(255, 255, 255, 0.1);
+  color: #F7F6F2;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(5px);
+  text-align: center;
+}
+
+/* Tablet and Desktop Sustainability Hero */
+@media (min-width: 768px) {
+  .sustainability-hero {
+    min-height: 70vh;
+  }
+
+  .sustainability-hero .hero-content {
+    text-align: left;
+    align-items: flex-start;
+    padding: 0 3rem;
+  }
+
+  .sustainability-hero .hero-content h1 {
+    font-size: 3rem;
+    max-width: 800px;
+  }
+
+  .sustainability-hero .hero-content h1::after {
+    left: 0;
+    transform: none;
+  }
+
+  .sustainability-hero .hero-content p {
+    font-size: 1.2rem;
+    max-width: 800px;
+  }
+
+  .proof-strip {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+
+  .proof-strip span {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
 }
 .wooden-background {
   background: url('../WhatsApp\ Image\ 2026-01-17\ at\ 2.58.46\ PM.jpeg') center/cover;
@@ -4495,6 +4566,10 @@ p{
   padding: 0.5rem 1rem;
 }
 .product-over{
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.5rem 1rem;
+}
+.sus-over{
   background: rgba(0, 0, 0, 0.35);
   padding: 0.5rem 1rem;
 }
