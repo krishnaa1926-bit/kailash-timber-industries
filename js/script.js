@@ -409,13 +409,16 @@ function handleMobileLogoScroll() {
     if (window.innerWidth <= 768) {
         const logoSpan = document.querySelector('.logo span');
         const header = document.querySelector('header');
-        if (logoSpan && header) {
+        const navLinks = document.querySelector('.nav-links');
+        if (logoSpan && header && navLinks) {
             if (window.scrollY > 100) {
                 logoSpan.classList.add('hide-on-scroll');
                 header.classList.add('scrolled');
+                navLinks.classList.add('scrolled');
             } else {
                 logoSpan.classList.remove('hide-on-scroll');
                 header.classList.remove('scrolled');
+                navLinks.classList.remove('scrolled');
             }
         }
     }

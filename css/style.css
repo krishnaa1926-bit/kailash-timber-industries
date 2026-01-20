@@ -120,7 +120,7 @@ header {
   background-color: #6bae868b;
   color: #F7F6F2;
   z-index: 1000;
-  opacity: transclucent;
+ 
 }
 
 nav {
@@ -159,10 +159,11 @@ nav {
 .nav-links li {
   margin: 0.5rem 0;
   position: relative;
+  
 }
 
 .nav-links a {
-  color: #f7f6f2;
+  color: #36ab54;
   transition: color 0.3s;
   display: block;
   padding: 0.5rem;
@@ -174,13 +175,13 @@ nav {
 
 /* Dropdown Menu */
 .dropdown {
-  position: relative;
+  position: absolute;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #1F3D2B;
+  background-color: #33b768;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -226,9 +227,9 @@ nav {
 }
 
 .menu-toggle span {
-  height: 3px;
-  width: 25px;
-  background-color: #F7F6F2;
+  height: 2px;
+  width: 18px;
+  background-color: #136243d0;
   margin: 3px 0;
   transition: 0.3s;
 }
@@ -257,7 +258,7 @@ nav {
   }
 
   .nav-links a {
-    color: #2B2B2B;
+    color: #f9efef;
   }
 
   .menu-toggle {
@@ -815,14 +816,27 @@ header.scrolled {
   }
 
   nav {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
   }
 
   .nav-links {
     flex-direction: column;
     width: 100%;
     display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    background-color: rgba(31, 61, 43, 0.8);
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+  }
+
+  .nav-links.scrolled {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
   }
 
   .nav-links li {
@@ -831,6 +845,10 @@ header.scrolled {
 
   .menu-toggle {
     display: flex;
+  }
+
+  .logo {
+    margin-bottom: 0;
   }
 
   .hero {
