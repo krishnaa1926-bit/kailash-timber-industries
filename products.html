@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body class="products-page">
     <header>
@@ -37,8 +37,12 @@
     <main>
         <section class="hero products-hero">
             <div class="hero-content">
-                <h2>Our Product Range</h2>
-                <p>Discover premium timber products crafted with excellence and sustainability</p>
+                <h1>MP Teakwood Products & Custom Sizes</h1>
+                <div class="accent-line"></div>
+                <div class="product-over">
+                <p>Browse our range of graded MP teakwood, precision-cut in-house and supplied in standard and custom dimensions for construction, furniture manufacturing, and export requirements.</p>
+                </div>
+                <a href="#timber" class="hero-cta">View Teak Sizes & Grades ↓</a>
             </div>
         </section>
 
@@ -118,7 +122,7 @@
         <section class="product-slideshow">
             <div class="slideshow-container">
                 <div class="slideshow">
-                    <div class="slide-card">
+                    <div class="slide-card active">
                         <img src="Gemini_Generated_Image_6js7kz6js7kz6js7.png" alt="Teak Planks">
                     </div>
                     <div class="slide-card">
@@ -150,6 +154,9 @@
                         <img src="WhatsApp Image 2026-01-17 at 2.58.49 PM.jpeg" alt="Processing Facility">
                     </div>
                 </div>
+                <!-- Navigation buttons -->
+                <button class="slide-nav prev-slide" onclick="prevCardSlide()">&#10094;</button>
+                <button class="slide-nav next-slide" onclick="nextCardSlide()">&#10095;</button>
             </div>
         </section>
     </main>

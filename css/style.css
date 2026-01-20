@@ -1068,7 +1068,7 @@ header.scrolled {
 .hero-subheading {
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
-  font-weight: 200;
+  font-weight: 500;
   line-height: 1;
   color: #eed4d4;
   margin-bottom: 2.5rem;
@@ -1886,55 +1886,136 @@ header.scrolled {
   font-weight: 500;
 }
 
-/* Product Hero Section - New CSS with products-hero class */
+/* Products Hero Section - Mobile-first professional design */
 .products-hero {
-  background: linear-gradient(135deg, rgba(114, 200, 148, 0.9), rgba(208, 144, 84, 0.7)), url('../WhatsApp\ Image\ 2026-01-17\ at\ 2.58.46\ PM.jpeg');
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)), url('../Gemini_Generated_Image_6js7kz6js7kz6js7.png');
   background-size: cover;
   background-position: center;
+  filter: grayscale(10%) blur(0.5px);
   color: #F7F6F2;
-  min-height: 100vh;
+  min-height: 55vh;
   position: relative;
   overflow: hidden;
   margin-bottom: 0;
   display: flex;
   align-items: center;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+}
+
+.products-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
 }
 
 .products-hero .hero-content {
   position: relative;
   z-index: 2;
-  animation: fadeIn 2s ease-out;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 3rem;
+  padding: 1.5rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
 }
 
-.products-hero .hero-content h2 {
-  font-family: 'Georgia', serif;
-  font-size: 3.5rem;
-  font-weight: 500;
-  color: #F7F6F2;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  margin-bottom: 1.5rem;
-  background: linear-gradient(45deg, #d2af23, #624e25);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: #F7F6F2; /* Fallback */
+.products-hero .hero-content h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  line-height: 1.2;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  max-width: 100%;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+.accent-line {
+  width: 80px;
+  height: 3px;
+  background: #8B5A2B;
+  border-radius: 2px;
+  margin: 0 auto;
 }
 
 .products-hero .hero-content p {
-  font-family: 'Arial', sans-serif;
-  font-size: 1.4rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 1.6;
-  color: #E8E3D8;
-  margin: 0 auto;
-  max-width: 800px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  animation: fadeIn 3s ease-out;
+  color: #F5F5F5;
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  max-width: 600px;
+  text-align: left;
+}
+
+.hero-cta {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #C9A24D;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  background: transparent;
+  display: inline-block;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.hero-cta:hover {
+  background: #C9A24D;
+  color: #2B2B2B;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(201, 162, 77, 0.4);
+}
+
+/* Tablet and Desktop Products Hero */
+@media (min-width: 768px) {
+  .products-hero {
+    min-height: 70vh;
+    padding: 4rem 2rem;
+  }
+
+  .products-hero .hero-content {
+    padding: 0 3rem;
+    text-align: left;
+    align-items: flex-start;
+    max-width: 1200px;
+  }
+
+  .products-hero .hero-content h1 {
+    font-size: 3rem;
+    max-width: 800px;
+  }
+
+  .products-hero .hero-content p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    text-align: left;
+  }
+
+  .accent-line {
+    margin: 0;
+  }
+
+  .hero-cta {
+    margin-top: 2rem;
+  }
 }
 
 .product-categories {
@@ -2822,6 +2903,24 @@ header.scrolled {
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   position: relative;
+}
+
+/* Mobile adjustments for product slideshow */
+@media (max-width: 767px) {
+  .product-slideshow {
+    padding: 2rem 0;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .product-slideshow .slide-card {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .product-slideshow .slide-card.active {
+    opacity: 1;
+  }
 }
 
 .product-slideshow .slideshow-container {
@@ -3951,6 +4050,7 @@ header.scrolled {
   /* Product slideshow: Enable sliding by hiding inactive slides and letting JS control */
   .product-slideshow .slideshow-container {
     height: auto;
+    min-height: 400px; /* Ensure minimum height for visibility */
   }
 
   .product-slideshow .slideshow {
@@ -4391,6 +4491,10 @@ p{
   background: rgba(0, 0, 0, 0.35);
 }
 .about-over{
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.5rem 1rem;
+}
+.product-over{
   background: rgba(0, 0, 0, 0.35);
   padding: 0.5rem 1rem;
 }

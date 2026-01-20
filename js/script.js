@@ -435,25 +435,35 @@ function getPositionX(event) {
 }
 
 // Touch events
-teamSwiper.addEventListener('touchstart', touchStart, false);
-teamSwiper.addEventListener('touchend', touchEnd, false);
-teamSwiper.addEventListener('touchmove', touchMove, false);
+if (teamSwiper) {
+  teamSwiper.addEventListener('touchstart', touchStart, false);
+  teamSwiper.addEventListener('touchend', touchEnd, false);
+  teamSwiper.addEventListener('touchmove', touchMove, false);
 
-// Mouse events for desktop testing
-teamSwiper.addEventListener('mousedown', touchStart, false);
-teamSwiper.addEventListener('mouseup', touchEnd, false);
-teamSwiper.addEventListener('mouseleave', touchEnd, false);
-teamSwiper.addEventListener('mousemove', touchMove, false);
+  // Mouse events for desktop testing
+  teamSwiper.addEventListener('mousedown', touchStart, false);
+  teamSwiper.addEventListener('mouseup', touchEnd, false);
+  teamSwiper.addEventListener('mouseleave', touchEnd, false);
+  teamSwiper.addEventListener('mousemove', touchMove, false);
+}
 
 // Initialize
-setPositionByIndex();
+if (teamSwiper) {
+  setPositionByIndex();
+}
 
 // Product Card Slideshow Functionality
 let currentCardSlide = 0;
 const cardSlides = document.querySelectorAll('.product-slideshow .slide-card');
 let cardSlideshowInterval;
+let isCardDragging = false;
+let cardStartPos = 0;
+let cardCurrentTranslate = 0;
+let cardPrevTranslate = 0;
+let cardAnimationID = 0;
 
 function showCardSlide(index) {
+    console.log('Showing card slide:', index);
     cardSlides.forEach((slide, i) => {
         slide.classList.remove('active');
         if (i === index) {
@@ -467,12 +477,59 @@ function nextCardSlide() {
     showCardSlide(currentCardSlide);
 }
 
+function prevCardSlide() {
+    currentCardSlide = (currentCardSlide - 1 + cardSlides.length) % cardSlides.length;
+    showCardSlide(currentCardSlide);
+}
+
 function startCardSlideshow() {
-    cardSlideshowInterval = setInterval(nextCardSlide, 6000); // 6 seconds per slide for slower animation
+    cardSlideshowInterval = setInterval(nextCardSlide, 2000); // 2 seconds per slide for testing
 }
 
 function stopCardSlideshow() {
     clearInterval(cardSlideshowInterval);
+}
+
+// Touch/Swipe functionality for mobile
+function cardTouchStart(event) {
+    cardStartPos = getCardPositionX(event);
+    isCardDragging = true;
+    cardAnimationID = requestAnimationFrame(cardAnimation);
+    stopCardSlideshow(); // Pause auto-play during swipe
+}
+
+function cardTouchEnd() {
+    isCardDragging = false;
+    cancelAnimationFrame(cardAnimationID);
+
+    const movedBy = cardCurrentTranslate - cardPrevTranslate;
+
+    if (movedBy < -50 && currentCardSlide < cardSlides.length - 1) {
+        nextCardSlide();
+    } else if (movedBy > 50 && currentCardSlide > 0) {
+        prevCardSlide();
+    } else {
+        showCardSlide(currentCardSlide); // Reset to current slide
+    }
+
+    cardPrevTranslate = 0;
+    cardCurrentTranslate = 0;
+    startCardSlideshow(); // Resume auto-play
+}
+
+function cardTouchMove(event) {
+    if (isCardDragging) {
+        const currentPosition = getCardPositionX(event);
+        cardCurrentTranslate = cardPrevTranslate + currentPosition - cardStartPos;
+    }
+}
+
+function getCardPositionX(event) {
+    return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+}
+
+function cardAnimation() {
+    if (isCardDragging) requestAnimationFrame(cardAnimation);
 }
 
 // Mobile logo span hide on scroll and navbar transparency
@@ -521,72 +578,30 @@ document.addEventListener('DOMContentLoaded', function() {
         slideshowContainer.addEventListener('mouseleave', startSlideshow);
     }
 
-    // Team slideshow functionality
-    if (teamSlides.length > 0) {
-        showTeamSlide(0);
-        startTeamSlideshow();
-
-        // Add click handlers for team dots
-        teamDots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentTeamSlide = index;
-                showTeamSlide(currentTeamSlide);
-                stopTeamSlideshow();
-                startTeamSlideshow(); // Restart with new timing
-            });
-        });
-
-        // Pause on hover
-        const teamSlideshowContainer = document.querySelector('.team-section .slideshow-container');
-        teamSlideshowContainer.addEventListener('mouseenter', stopTeamSlideshow);
-        teamSlideshowContainer.addEventListener('mouseleave', startTeamSlideshow);
-    }
-
     // Product card slideshow functionality
     if (cardSlides.length > 0) {
+        console.log('Card slides found:', cardSlides.length);
         showCardSlide(0);
-        startCardSlideshow();
+        setTimeout(() => {
+            startCardSlideshow();
+        }, 1000); // Delay start by 1 second
 
         // Pause on hover
         const productSlideshowContainer = document.querySelector('.product-slideshow .slideshow-container');
         productSlideshowContainer.addEventListener('mouseenter', stopCardSlideshow);
         productSlideshowContainer.addEventListener('mouseleave', startCardSlideshow);
+
+        // Add touch/swipe events for mobile
+        productSlideshowContainer.addEventListener('touchstart', cardTouchStart, false);
+        productSlideshowContainer.addEventListener('touchend', cardTouchEnd, false);
+        productSlideshowContainer.addEventListener('touchmove', cardTouchMove, false);
+
+        // Mouse events for desktop testing
+        productSlideshowContainer.addEventListener('mousedown', cardTouchStart, false);
+        productSlideshowContainer.addEventListener('mouseup', cardTouchEnd, false);
+        productSlideshowContainer.addEventListener('mouseleave', cardTouchEnd, false);
+        productSlideshowContainer.addEventListener('mousemove', cardTouchMove, false);
     }
 
-    // Product slideshow functionality (legacy)
-    const productSlides = document.querySelectorAll('.product-slideshow .slide');
-    let productCurrentSlide = 0;
-    let productSlideshowInterval;
 
-    function showProductSlide(index) {
-        productSlides.forEach((slide, i) => {
-            slide.classList.remove('active');
-            if (i === index) {
-                slide.classList.add('active');
-            }
-        });
-    }
-
-    function nextProductSlide() {
-        productCurrentSlide = (productCurrentSlide + 1) % productSlides.length;
-        showProductSlide(productCurrentSlide);
-    }
-
-    function startProductSlideshow() {
-        productSlideshowInterval = setInterval(nextProductSlide, 4500); // 4.5 seconds
-    }
-
-    function stopProductSlideshow() {
-        clearInterval(productSlideshowInterval);
-    }
-
-    if (productSlides.length > 0) {
-        showProductSlide(0);
-        startProductSlideshow();
-
-        // Pause on hover
-        const productSlideshowContainer = document.querySelector('.product-slideshow');
-        productSlideshowContainer.addEventListener('mouseenter', stopProductSlideshow);
-        productSlideshowContainer.addEventListener('mouseleave', startProductSlideshow);
-    }
 });
