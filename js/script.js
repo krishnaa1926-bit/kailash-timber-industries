@@ -350,8 +350,8 @@ function submitCustomSizeForm(event) {
 
 // Timeline Slideshow Functionality
 let currentSlide = 0;
-const slides = document.querySelectorAll('.slide');
-const dots = document.querySelectorAll('.slideshow-dots .dot');
+const slides = document.querySelectorAll('.timeline-section .slide');
+const dots = document.querySelectorAll('.timeline-section .slideshow-dots .dot');
 let slideshowInterval;
 
 function showSlide(index) {
@@ -376,6 +376,77 @@ function startSlideshow() {
 function stopSlideshow() {
     clearInterval(slideshowInterval);
 }
+
+// Team Swiper Functionality
+let currentTeamSlide = 0;
+const teamSwiper = document.querySelector('.team-swiper');
+const teamWrapper = document.querySelector('.swiper-wrapper');
+const teamSlides = document.querySelectorAll('.swiper-slide');
+let isDragging = false;
+let startPos = 0;
+let currentTranslate = 0;
+let prevTranslate = 0;
+let animationID = 0;
+
+function setPositionByIndex() {
+    currentTranslate = currentTeamSlide * -100;
+    prevTranslate = currentTranslate;
+    setSliderPosition();
+}
+
+function setSliderPosition() {
+    teamWrapper.style.transform = `translateX(${currentTranslate}%)`;
+}
+
+function animation() {
+    setSliderPosition();
+    if (isDragging) requestAnimationFrame(animation);
+}
+
+function touchStart(event) {
+    startPos = getPositionX(event);
+    isDragging = true;
+    animationID = requestAnimationFrame(animation);
+    teamSwiper.classList.add('grabbing');
+}
+
+function touchEnd() {
+    isDragging = false;
+    cancelAnimationFrame(animationID);
+    teamSwiper.classList.remove('grabbing');
+
+    const movedBy = currentTranslate - prevTranslate;
+
+    if (movedBy < -100 && currentTeamSlide < teamSlides.length - 1) currentTeamSlide += 1;
+    if (movedBy > 100 && currentTeamSlide > 0) currentTeamSlide -= 1;
+
+    setPositionByIndex();
+}
+
+function touchMove(event) {
+    if (isDragging) {
+        const currentPosition = getPositionX(event);
+        currentTranslate = prevTranslate + currentPosition - startPos;
+    }
+}
+
+function getPositionX(event) {
+    return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+}
+
+// Touch events
+teamSwiper.addEventListener('touchstart', touchStart, false);
+teamSwiper.addEventListener('touchend', touchEnd, false);
+teamSwiper.addEventListener('touchmove', touchMove, false);
+
+// Mouse events for desktop testing
+teamSwiper.addEventListener('mousedown', touchStart, false);
+teamSwiper.addEventListener('mouseup', touchEnd, false);
+teamSwiper.addEventListener('mouseleave', touchEnd, false);
+teamSwiper.addEventListener('mousemove', touchMove, false);
+
+// Initialize
+setPositionByIndex();
 
 // Product Card Slideshow Functionality
 let currentCardSlide = 0;
@@ -445,9 +516,30 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Pause on hover
-        const slideshowContainer = document.querySelector('.slideshow-container');
+        const slideshowContainer = document.querySelector('.timeline-section .slideshow-container');
         slideshowContainer.addEventListener('mouseenter', stopSlideshow);
         slideshowContainer.addEventListener('mouseleave', startSlideshow);
+    }
+
+    // Team slideshow functionality
+    if (teamSlides.length > 0) {
+        showTeamSlide(0);
+        startTeamSlideshow();
+
+        // Add click handlers for team dots
+        teamDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentTeamSlide = index;
+                showTeamSlide(currentTeamSlide);
+                stopTeamSlideshow();
+                startTeamSlideshow(); // Restart with new timing
+            });
+        });
+
+        // Pause on hover
+        const teamSlideshowContainer = document.querySelector('.team-section .slideshow-container');
+        teamSlideshowContainer.addEventListener('mouseenter', stopTeamSlideshow);
+        teamSlideshowContainer.addEventListener('mouseleave', startTeamSlideshow);
     }
 
     // Product card slideshow functionality
